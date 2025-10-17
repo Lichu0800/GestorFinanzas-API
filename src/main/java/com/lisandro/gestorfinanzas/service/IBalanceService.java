@@ -3,8 +3,11 @@ package com.lisandro.gestorfinanzas.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.lisandro.gestorfinanzas.model.Balance;
 
+@Service
 public interface IBalanceService {
 
     public List<Balance> findAll();

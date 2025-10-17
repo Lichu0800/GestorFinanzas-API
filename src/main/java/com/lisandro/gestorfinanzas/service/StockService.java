@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lisandro.gestorfinanzas.model.Stock;
 import com.lisandro.gestorfinanzas.repository.IStockRepository;
 
+@Service
 public class StockService implements IStockService {
 
     @Autowired
