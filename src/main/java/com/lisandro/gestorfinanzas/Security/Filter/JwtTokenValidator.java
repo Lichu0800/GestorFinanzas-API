@@ -16,6 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.lisandro.gestorfinanzas.utils.JwtUtils;
+import com.lisandro.gestorfinanzas.service.TokenBlacklistService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -25,9 +26,11 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JwtTokenValidator extends OncePerRequestFilter {
 
     private JwtUtils jwtUtils;
+    private TokenBlacklistService tokenBlacklistService;
 
-    public JwtTokenValidator(JwtUtils jwtUtils) {
+    public JwtTokenValidator(JwtUtils jwtUtils, TokenBlacklistService tokenBlacklistService) {
         this.jwtUtils = jwtUtils;
+        this.tokenBlacklistService = tokenBlacklistService;
     }
 
     @Override
@@ -40,6 +43,14 @@ public class JwtTokenValidator extends OncePerRequestFilter {
         if (jwtToken != null) {
             // Recibo el token a traves del header y le saco la palabra bearer
             jwtToken = jwtToken.substring(7);
+
+            // Verificar si el token está en la blacklist
+            if (tokenBlacklistService.isTokenBlacklisted(jwtToken)) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"error\": \"Token has been invalidated\"}");
+                return;
+            }
+
             // Se decodifica el token
             DecodedJWT decodedJWT = jwtUtils.validateToken(jwtToken);
             // Traemos el nombre de usuario del claim

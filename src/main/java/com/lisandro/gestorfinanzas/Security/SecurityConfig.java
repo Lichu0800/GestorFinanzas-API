@@ -17,8 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.lisandro.gestorfinanzas.Security.Filter.JwtTokenValidator;
+import com.lisandro.gestorfinanzas.service.TokenBlacklistService;
 import com.lisandro.gestorfinanzas.utils.JwtUtils;
 
 @Configuration
@@ -29,13 +31,21 @@ public class SecurityConfig {
     @Autowired
     private JwtUtils jwtUtils;
 
+    @Autowired
+    private TokenBlacklistService tokenBlacklistService;
+
+    @Autowired
+    private CorsConfigurationSource corsConfigurationSource;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .csrf(csrf -> csrf.disable()) // Deshabilita una proteccion INVESTIGAR
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Politica
                 .httpBasic(Customizer.withDefaults())
-                .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class);
+                .addFilterBefore(new JwtTokenValidator(jwtUtils, tokenBlacklistService),
+                        BasicAuthenticationFilter.class);
         return http.build(); // "CREAR" LA HTTP Y BUILDERLA
     }
 

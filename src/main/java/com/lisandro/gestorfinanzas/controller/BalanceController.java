@@ -22,7 +22,4 @@ public class BalanceController {
 
     }
 
-    @GetMapping
-    public ResponseEntity<Balance> getBalanceById()
-
 }
