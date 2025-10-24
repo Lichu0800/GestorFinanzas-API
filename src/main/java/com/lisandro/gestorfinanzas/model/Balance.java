@@ -38,4 +38,7 @@ public class Balance {
     @JsonBackReference
     private UserSec user;
 
+    @OneToMany(mappedBy = "balance", cascade = CascadeType.ALL)
+    private List<Movement> movements = new ArrayList<>();
+
 }
