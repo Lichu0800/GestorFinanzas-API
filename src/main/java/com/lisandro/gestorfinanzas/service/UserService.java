@@ -46,4 +46,10 @@ public class UserService implements IUserService {
         return new BCryptPasswordEncoder().encode(password);
     }
 
+    @Override
+    public UserSec findByUsername(String username) {
+        return userRepository.findUserEntityByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + username));
+    }
+
 }

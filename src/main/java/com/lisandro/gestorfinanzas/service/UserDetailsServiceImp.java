@@ -83,7 +83,8 @@ public class UserDetailsServiceImp implements UserDetailsService {
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             throw new BadCredentialsException("Invalid username or password");
         }
-        return new UsernamePasswordAuthenticationToken(password, userDetails.getPassword(),
+        // ✅ CORRECCIÓN: username como principal, password como credentials
+        return new UsernamePasswordAuthenticationToken(username, password,
                 userDetails.getAuthorities());
     }
 

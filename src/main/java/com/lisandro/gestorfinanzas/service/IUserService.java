@@ -7,15 +7,17 @@ import com.lisandro.gestorfinanzas.model.UserSec;
 
 public interface IUserService {
 
-    public List<UserSec> findAll();
+    List<UserSec> findAll();
 
-    public Optional<UserSec> findById(Long id);
+    Optional<UserSec> findById(Long id);
 
-    public UserSec save(UserSec userSec);
+    UserSec save(UserSec userSec);
 
-    public void deleteById(Long id);
+    void deleteById(Long id);
 
-    public void update(UserSec userSec);
+    void update(UserSec userSec);
+
+    UserSec findByUsername(String username);
 
     String encriptPassword(String password);
 
