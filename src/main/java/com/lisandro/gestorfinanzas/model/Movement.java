@@ -26,20 +26,61 @@ public class Movement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descripcion;
-    private double monto;
-    private String categoria;
-    private String moneda;
+
+    private String description;
+
+    private Double amount;
+
+    private MovementType movmentType;
+
+    private Currency currency;
+
     @Column(nullable = false)
     private LocalDateTime fecha;
+
     @ManyToOne
     @JoinColumn(name = "balance_id", nullable = false)
     private Balance balance;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     @PrePersist
     protected void onCreate() {
         if (fecha == null) {
             fecha = LocalDateTime.now();
+        }
+    }
+
+    public enum Currency {
+        ARS("Peso Argentino"),
+        USD("Dolar");
+
+        private final String description;
+
+        Currency(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+    }
+
+    public enum MovementType {
+        INGRESO("Ingreso"),
+        EGRESO("Egreso"),
+        TRANSFERENCIA("Transferencia");
+
+        private final String description;
+
+        MovementType(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
         }
     }
 }
