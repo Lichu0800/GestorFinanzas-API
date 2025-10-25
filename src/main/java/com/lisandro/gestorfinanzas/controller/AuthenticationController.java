@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lisandro.gestorfinanzas.service.UserDetailsServiceImp;
-import com.lisandro.gestorfinanzas.service.TokenBlacklistService;
+import com.lisandro.gestorfinanzas.service.auth.TokenBlacklistService;
+import com.lisandro.gestorfinanzas.service.auth.UserDetailsServiceImp;
 import com.lisandro.gestorfinanzas.dto.AuthResponseDTO;
 import com.lisandro.gestorfinanzas.dto.AuthLoginRequestDTO;
 

@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.lisandro.gestorfinanzas.Security.Filter.JwtTokenValidator;
-import com.lisandro.gestorfinanzas.service.TokenBlacklistService;
+import com.lisandro.gestorfinanzas.service.auth.TokenBlacklistService;
 import com.lisandro.gestorfinanzas.utils.JwtUtils;
 
 @Configuration

@@ -1,4 +1,4 @@
-package com.lisandro.gestorfinanzas.service;
+package com.lisandro.gestorfinanzas.service.auth;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Set;

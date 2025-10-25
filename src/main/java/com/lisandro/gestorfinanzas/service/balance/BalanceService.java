@@ -1,4 +1,4 @@
-package com.lisandro.gestorfinanzas.service;
+package com.lisandro.gestorfinanzas.service.balance;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.lisandro.gestorfinanzas.model.Balance;
 import com.lisandro.gestorfinanzas.model.UserSec;
 import com.lisandro.gestorfinanzas.repository.IBalanceRepository;
+import com.lisandro.gestorfinanzas.service.user.IUserService;
 
 @Service
 public class BalanceService implements IBalanceService {

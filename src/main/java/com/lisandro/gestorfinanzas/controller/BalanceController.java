@@ -13,7 +13,7 @@ import com.lisandro.gestorfinanzas.dto.BalanceDTO;
 import com.lisandro.gestorfinanzas.dto.StockDTO;
 import com.lisandro.gestorfinanzas.model.Balance;
 import com.lisandro.gestorfinanzas.model.Stock;
-import com.lisandro.gestorfinanzas.service.IBalanceService;
+import com.lisandro.gestorfinanzas.service.balance.IBalanceService;
 
 @RestController
 @RequestMapping("/api/balance")

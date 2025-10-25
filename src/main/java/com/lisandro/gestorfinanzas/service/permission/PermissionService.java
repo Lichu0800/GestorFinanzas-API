@@ -1,4 +1,4 @@
-package com.lisandro.gestorfinanzas.service;
+package com.lisandro.gestorfinanzas.service.permission;
 
 import java.util.List;
 import java.util.Optional;

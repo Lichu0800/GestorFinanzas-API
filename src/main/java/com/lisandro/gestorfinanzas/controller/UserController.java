@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lisandro.gestorfinanzas.model.Role;
 import com.lisandro.gestorfinanzas.model.UserSec;
-import com.lisandro.gestorfinanzas.service.IRoleService;
-import com.lisandro.gestorfinanzas.service.IUserService;
+import com.lisandro.gestorfinanzas.service.role.IRoleService;
+import com.lisandro.gestorfinanzas.service.user.IUserService;
 
 @RestController
 @RequestMapping("/api/users")

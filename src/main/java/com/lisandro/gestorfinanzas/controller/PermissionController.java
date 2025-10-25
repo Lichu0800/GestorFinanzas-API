@@ -1,7 +1,7 @@
 package com.lisandro.gestorfinanzas.controller;
 
 import com.lisandro.gestorfinanzas.model.Permission;
-import com.lisandro.gestorfinanzas.service.IPermissionService;
+import com.lisandro.gestorfinanzas.service.permission.IPermissionService;
 
 import java.util.List;
 import java.util.Optional;

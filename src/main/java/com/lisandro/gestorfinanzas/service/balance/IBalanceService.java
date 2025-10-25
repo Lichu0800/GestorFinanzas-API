@@ -1,4 +1,4 @@
-package com.lisandro.gestorfinanzas.service;
+package com.lisandro.gestorfinanzas.service.balance;
 
 import java.util.List;
 

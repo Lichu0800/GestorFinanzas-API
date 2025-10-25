@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lisandro.gestorfinanzas.model.Role;
-import com.lisandro.gestorfinanzas.service.IPermissionService;
-import com.lisandro.gestorfinanzas.service.IRoleService;
+import com.lisandro.gestorfinanzas.service.permission.IPermissionService;
+import com.lisandro.gestorfinanzas.service.role.IRoleService;
 
 @RestController
 @RequestMapping("/api/roles")
